@@ -4,48 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carta - Bar Sergio's</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="visual-enhancements.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <div id="mainContent">
-        <nav class="navbar">
-            <div class="container">
-                <div class="navbar-brand">Bar Sergio's</div>
-                <div id="darkModeToggle" class="dark-mode-toggle">
-                    <i class="fas fa-moon"></i>
-                </div>
-                <div id="accessCounter" class="access-counter">
-                    <span>Pax: 0</span>
-                </div>
-            </div>
-        </nav>
-
+    <!-- Barra de navegación -->
+    <nav class="navbar">
         <div class="container">
-            <div class="menu-container">
-                <div class="category-list" id="categoryList">
-                    <!-- Las categorías se cargarán dinámicamente -->
-                </div>
-                
-                <div class="product-grid" id="productGrid">
-                    <!-- Los productos se cargarán dinámicamente -->
-                </div>
+            <div class="navbar-brand">Bar Sergio's</div>
+            <div class="dark-mode-toggle" id="darkModeToggle">
+                <i class="fas fa-moon"></i>
             </div>
         </div>
+    </nav>
 
-        <footer class="footer">
-            <div class="container">
-                <p>&copy; 2025 Bar Sergio's. Todos los derechos reservados.</p>
+    <!-- Contenedor principal -->
+    <div class="container" id="mainContent">
+        <!-- Menú de categorías -->
+        <div class="menu-container">
+            <div class="category-list" id="categoryList">
+                <div class="category-item active" data-category="desayunos">
+                    <i class="fas fa-coffee"></i> Desayunos
+                </div>
+                <div class="category-item" data-category="bocadillos">
+                    <i class="fas fa-bread-slice"></i> Bocadillos
+                </div>
+                <div class="category-item" data-category="vermuts">
+                    <i class="fas fa-wine-glass-alt"></i> Vermuts
+                </div>
+                <div class="category-item" data-category="tapas">
+                    <i class="fas fa-utensils"></i> Tapas
+                </div>
+                <div class="category-item" data-category="torradas">
+                    <i class="fas fa-pizza-slice"></i> Torradas
+                </div>
+                <div class="category-item" data-category="tablas">
+                    <i class="fas fa-cheese"></i> Tablas
+                </div>
+                <div class="category-item" data-category="especiales">
+                    <i class="fas fa-star"></i> Especiales
+                </div>
+                <div class="category-item" data-category="croquetas">
+                    <i class="fas fa-circle"></i> Croquetas
+                </div>
             </div>
-        </footer>
+
+            <!-- Cuadrícula de productos -->
+            <div class="product-grid" id="productGrid">
+                <!-- Los productos se cargarán dinámicamente -->
+            </div>
+        </div>
     </div>
 
-    <!-- El panel de administración se cargará dinámicamente -->
-    
-    <script src="local-storage.js"></script>
+    <!-- Contador de accesos -->
+    <div class="access-counter" id="accessCounter">Pax: <span id="accessCount">0</span></div>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
+    <script src="local-storage.js"></script>
     <script src="admin-access.js"></script>
     <script src="mobile-optimization.js"></script>
+    <script src="menu-optimization.js"></script>
 </body>
 </html>

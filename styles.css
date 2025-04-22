@@ -89,6 +89,9 @@ body {
   margin-bottom: 2rem;
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary) var(--color-light);
+  -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento en iOS */
+  scroll-snap-type: x mandatory; /* Mejora la experiencia de desplazamiento */
+  position: relative;
 }
 
 .category-list::-webkit-scrollbar {
@@ -105,6 +108,37 @@ body {
   border-radius: 10px;
 }
 
+/* Indicadores de desplazamiento para el menú */
+.category-scroll-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+  z-index: 10;
+}
+
+.category-scroll-indicator:hover {
+  opacity: 1;
+}
+
+.category-scroll-left {
+  left: 0;
+}
+
+.category-scroll-right {
+  right: 0;
+}
+
 .category-item {
   flex: 0 0 auto;
   padding: 0.8rem 1.5rem;
@@ -117,6 +151,7 @@ body {
   display: flex;
   align-items: center;
   white-space: nowrap;
+  scroll-snap-align: start; /* Mejora la experiencia de desplazamiento */
 }
 
 .category-item i {
@@ -135,6 +170,68 @@ body {
 }
 
 .category-item.active i {
+  color: white;
+}
+
+/* Botón de menú desplegable para categorías en móvil */
+.category-dropdown {
+  display: none;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.category-dropdown-btn {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  box-shadow: var(--box-shadow);
+  z-index: 100;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.category-dropdown-item {
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+  display: flex;
+  align-items: center;
+}
+
+.category-dropdown-item i {
+  margin-right: 0.5rem;
+  color: var(--color-primary);
+}
+
+.category-dropdown-item:hover {
+  background-color: var(--color-light);
+}
+
+.category-dropdown-item.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.category-dropdown-item.active i {
   color: white;
 }
 
@@ -305,6 +402,27 @@ body.dark-mode .category-item.active i {
   color: #121212;
 }
 
+body.dark-mode .category-dropdown-btn {
+  background-color: #1f2937;
+}
+
+body.dark-mode .category-dropdown-content {
+  background-color: #2d3748;
+}
+
+body.dark-mode .category-dropdown-item:hover {
+  background-color: #4a5568;
+}
+
+body.dark-mode .category-dropdown-item.active {
+  background-color: var(--color-accent);
+  color: #121212;
+}
+
+body.dark-mode .category-dropdown-item.active i {
+  color: #121212;
+}
+
 body.dark-mode .product-card {
   background-color: #1f2937;
 }
@@ -376,18 +494,62 @@ body.dark-mode .empty-message {
     width: 95%;
     padding: 1.5rem;
   }
-}
-
-@media (max-width: 480px) {
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
   
   .category-item {
-    padding: 0.6rem 1rem;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .category-item i {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Mostrar menú desplegable en pantallas muy pequeñas */
+  .category-list {
+    display: none;
+  }
+  
+  .category-dropdown {
+    display: block;
+  }
+  
+  .product-grid {
+    grid-template-columns: 1fr;
   }
   
   .navbar-brand {
     font-size: 1.3rem;
   }
+  
+  .category-scroll-indicator {
+    display: none;
+  }
+}
+
+/* Estilos para indicador de desplazamiento en pantallas táctiles */
+@media (hover: none) {
+  .category-scroll-indicator {
+    display: none;
+  }
+}
+
+/* Estilos para contador de accesos */
+.access-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  box-shadow: var(--box-shadow);
+  z-index: 900;
+}
+
+body.dark-mode .access-counter {
+  background-color: var(--color-accent);
+  color: var(--color-dark);
 }
