@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta - Bar Sergio's</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="visual-enhancements.css">
+</head>
+<body>
+    <div id="mainContent">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">Bar Sergio's</div>
+                <div id="darkModeToggle" class="dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div id="accessCounter" class="access-counter">
+                    <span>Pax: 0</span>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="menu-container">
+                <div class="category-list" id="categoryList">
+                    <!-- Las categorías se cargarán dinámicamente -->
+                </div>
+                
+                <div class="product-grid" id="productGrid">
+                    <!-- Los productos se cargarán dinámicamente -->
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2025 Bar Sergio's. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- El panel de administración se cargará dinámicamente -->
+    
+    <script src="local-storage.js"></script>
+    <script src="script.js"></script>
+    <script src="admin-access.js"></script>
+    <script src="mobile-optimization.js"></script>
+</body>
+</html>

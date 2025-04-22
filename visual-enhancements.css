@@ -1,0 +1,451 @@
+/* Estilos para optimización móvil */
+
+/* Estilos base para dispositivos móviles */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  
+  .container {
+    padding: 10px;
+  }
+  
+  .menu-container {
+    flex-direction: column;
+  }
+  
+  .category-list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .category-item {
+    flex: 0 0 auto;
+    margin-right: 10px;
+    padding: 8px 15px;
+  }
+  
+  .product-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .product-card {
+    margin-bottom: 15px;
+  }
+  
+  .modal-content {
+    width: 95%;
+    max-height: 80vh;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  .navbar-toggler {
+    display: block;
+  }
+  
+  .navbar-collapse {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .navbar-collapse.show {
+    max-height: 300px;
+  }
+  
+  /* Mejoras para la experiencia táctil */
+  button, 
+  .category-item, 
+  .product-card,
+  .navbar-brand,
+  .modal-close {
+    min-height: 44px; /* Tamaño mínimo para elementos táctiles */
+  }
+  
+  /* Evitar zoom no deseado en inputs */
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
+/* Estilos para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .modal-content {
+    width: 80%;
+  }
+}
+
+/* Ajustes para orientación horizontal en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .modal-content {
+    max-height: 90vh;
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Soporte para modo oscuro del sistema */
+@media (prefers-color-scheme: dark) {
+  body.auto-dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+  }
+  
+  body.auto-dark-mode .navbar,
+  body.auto-dark-mode .footer {
+    background-color: #1a1a2e;
+  }
+  
+  body.auto-dark-mode .product-card,
+  body.auto-dark-mode .category-item,
+  body.auto-dark-mode .modal-content {
+    background-color: #1f2937;
+    color: #f1f1f1;
+  }
+  
+  body.auto-dark-mode .modal-close {
+    color: #f1f1f1;
+  }
+}
+
+/* Mejoras para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo-img {
+    transform: scale(0.5);
+    transform-origin: left center;
+  }
+}
+
+/* Optimizaciones para ahorro de batería */
+@media (prefers-reduced-data: reduce) {
+  img {
+    max-width: 80%;
+    image-rendering: optimizeSpeed;
+  }
+  
+  .background-image {
+    background-image: none !important;
+  }
+}
+
+/* Estilos para gestos táctiles */
+.swipe-area {
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mejoras para la visualización de productos */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+  padding-top: 56.25%; /* Relación de aspecto 16:9 */
+}
+
+.product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.product-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.product-description {
+  color: #666;
+  margin-bottom: 10px;
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.product-price {
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  margin-top: auto;
+}
+
+.product-badges {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.product-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-special {
+  background-color: #ff9800;
+  color: white;
+}
+
+.badge-vegetarian {
+  background-color: #4caf50;
+  color: white;
+}
+
+.badge-vegan {
+  background-color: #8bc34a;
+  color: white;
+}
+
+.badge-gluten-free {
+  background-color: #9c27b0;
+  color: white;
+}
+
+/* Mejoras para el contador de accesos */
+.access-counter {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  z-index: 1000;
+}
+
+/* Mejoras para el modal de sugerencias */
+.suggestions-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.suggestions-content {
+  background-color: white;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.suggestions-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.suggestions-header h2 {
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.suggestions-list {
+  margin-bottom: 20px;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.suggestion-icon {
+  flex: 0 0 40px;
+  height: 40px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.suggestion-text {
+  flex: 1;
+}
+
+.suggestion-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.suggestion-description {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.suggestions-footer {
+  text-align: center;
+}
+
+.close-suggestions-btn {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.close-suggestions-btn:hover {
+  background-color: #1a252f;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .footer {
+  background-color: #1a1a2e;
+}
+
+body.dark-mode .product-card,
+body.dark-mode .category-item,
+body.dark-mode .modal-content,
+body.dark-mode .suggestions-content {
+  background-color: #1f2937;
+  color: #f1f1f1;
+}
+
+body.dark-mode .product-description {
+  color: #ccc;
+}
+
+body.dark-mode .modal-close {
+  color: #f1f1f1;
+}
+
+body.dark-mode .suggestion-item {
+  border-bottom-color: #333;
+}
+
+body.dark-mode .suggestion-description {
+  color: #ccc;
+}
+
+/* Animaciones optimizadas */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease forwards;
+}
+
+/* Mejoras para la visualización de alérgenos */
+.allergens-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.allergen-tag {
+  font-size: 0.7rem;
+  padding: 3px 6px;
+  border-radius: 3px;
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Indicador de nivel de picante */
+.spicy-level {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.spicy-level-text {
+  font-size: 0.8rem;
+  margin-right: 5px;
+}
+
+.spicy-indicator {
+  display: flex;
+}
+
+.spicy-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #dc3545;
+  margin-right: 3px;
+}
+
+.spicy-dot.inactive {
+  background-color: #e9ecef;
+}
